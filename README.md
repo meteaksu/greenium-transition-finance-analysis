@@ -1,13 +1,13 @@
 # Econometric & Behavioral Modeling of the Greenium and Transition Finance
 
-## 📌 Executive Summary
+## Executive Summary
 This research project explores the behavioral finance mechanisms and economic incentives behind the **Greenium** (Green Bond Premium) and applies these dynamics to **Transition Finance** instruments (Sustainability-Linked Bonds - SLBs). 
 
 Utilizing a matched-pair bond dataset constructed in **DuckDB** based on **Luxembourg Green Exchange (LGX)** standards, the study quantifies the signaling impact of issuer ESG scores on yield discounts and analyzes the secondary market $YTM$ penalties triggered by coupon step-up mechanisms.
 
 ---
 
-## 🛠️ Tech Stack & Methodology
+## Tech Stack & Methodology
 * **Database & Data Architecture:** `DuckDB` (In-Memory SQL analytics, relational schema design, matched-pair join logic)
 * **Econometric Modeling:** `Statsmodels` (Ordinary Least Squares - OLS Regression)
 * **Data Processing & Visualization:** `Pandas`, `NumPy`, `Matplotlib` (Publication-ready financial visualization)
@@ -15,7 +15,7 @@ Utilizing a matched-pair bond dataset constructed in **DuckDB** based on **Luxem
 
 ---
 
-## 📊 Key Findings & Empirical Results
+## Key Findings & Empirical Results
 
 ### 1. The Greenium Behavioral Model (OLS Regression)
 $$\text{Greenium (bps)} = \beta_0 + \beta_1 (\text{ESG Score}) + \beta_2 (\text{Carbon Intensity}) + \epsilon$$
@@ -29,7 +29,7 @@ $$\text{Greenium (bps)} = \beta_0 + \beta_1 (\text{ESG Score}) + \beta_2 (\text{
 
 ---
 
-## 🚀 How to Run
+## How to Run
 1. Clone this repository:
    ```bash
    git clone [https://github.com/meteaksu/greenium-transition-finance-analysis.git](https://github.com/meteaksu/greenium-transition-finance-analysis.git)
