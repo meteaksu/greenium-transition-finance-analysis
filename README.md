@@ -55,7 +55,7 @@ This project builds a relational database simulation and econometric framework t
 
 ## How to Run
 
-1. Clone the repository:
+ Clone the repository:
    ```bash
    git clone [https://github.com/meteaksu/greenium-transition-finance-simulation.git](https://github.com/meteaksu/greenium-transition-finance-simulation.git)
    cd greenium-transition-finance-simulation
