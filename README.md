@@ -1,37 +1,67 @@
-# Econometric & Behavioral Modeling of the Greenium and Transition Finance
+# Sustainable Finance Simulation: Greenium Valuation & Transition Dynamics
 
 ## Executive Summary
-This research project explores the behavioral finance mechanisms and economic incentives behind the **Greenium** (Green Bond Premium) and applies these dynamics to **Transition Finance** instruments (Sustainability-Linked Bonds - SLBs). 
-
-Utilizing a matched-pair bond dataset constructed in **DuckDB** based on **Luxembourg Green Exchange (LGX)** standards, the study quantifies the signaling impact of issuer ESG scores on yield discounts and analyzes the secondary market $YTM$ penalties triggered by coupon step-up mechanisms.
+This project builds a relational database simulation and econometric framework to quantify the "Greenium" (yield discount on green bonds) and evaluate transition finance mechanics in corporate debt markets. Styled after the Luxembourg Green Exchange (LGX) and Climate Bonds Initiative (CBI) standards, the study models matched-pair bond structures and Sustainability-Linked Bonds (SLBs) with step-up penalty triggers. Utilizing an Ordinary Least Squares (OLS) regression framework, the model isolates the marginal impact of issuer ESG scores on secondary market yield spreads.
 
 ---
 
-## Tech Stack & Methodology
-* **Database & Data Architecture:** `DuckDB` (In-Memory SQL analytics, relational schema design, matched-pair join logic)
-* **Econometric Modeling:** `Statsmodels` (Ordinary Least Squares - OLS Regression)
-* **Data Processing & Visualization:** `Pandas`, `NumPy`, `Matplotlib` (Publication-ready financial visualization)
-* **Market Standards:** Luxembourg Green Exchange (LGX) DataHub, Climate Bonds Initiative (CBI), ICMA SLB Principles
+## Key Features & Technical Highlights
+
+* **Relational Database Schema Design (DuckDB):** Structured an in-memory database linking corporate issuers with multi-class bond issuances (Vanilla, Green, and SLB), establishing relational constraints and domain-specific attributes.
+* **Matched-Pair Greenium Extraction:** Implemented SQL queries to pair Green and Vanilla bonds issued by the same entity, calculating the net yield differential (Greenium) in basis points (bps).
+* **Transition Finance Mechanics:** Modeled SLB coupon step-up penalties (25 bps) triggered by failure to meet key performance indicators (KPIs), capturing risk-pricing dynamics for high-emitting sectors.
+* **Econometric Model Specification:** Applied OLS regression via `statsmodels` to benchmark the empirical relationship between ESG scores and Greenium spreads ($0.15 \text{ bps}$ reduction per ESG point).
 
 ---
 
-## Key Findings & Empirical Results
+## Analytical Pipeline Workflow
 
-### 1. The Greenium Behavioral Model (OLS Regression)
-$$\text{Greenium (bps)} = \beta_0 + \beta_1 (\text{ESG Score}) + \beta_2 (\text{Carbon Intensity}) + \epsilon$$
+[ LGX / CBI Data Standards Schema ]
+│
+▼
+[ Synthetic Market Generation ] ──► (50 Issuers across 6 Sectors & Matched Bonds)
+│
+▼
+[ DuckDB Relational Engine ] ──► (Matched-Pair JOINs & SLB Penalty Tracking)
+│
+▼
+[ Econometric OLS Regression ] ─► (Greenium ~ ESG Score + Carbon Intensity)
+│
+▼
+[ Matplotlib Publication Plots ] ─► (Greenium Trend & KPI Step-Up Bar Chart)
 
-* **ESG Signaling Power ($p < 0.001$):** A statistically significant positive relationship was confirmed between an issuer's ESG score and the magnitude of the Greenium. Each 1-point increase in ESG score yields an average **~0.15 bps yield reduction** (Warm-Glow effect / SFDR institutional mandate push).
-* **Greenwashing Premium:** Carbon intensity alone showed statistical insignificance in depressing Greenium, indicating that secondary markets heavily price ESG signaling over raw current carbon metrics.
+---
 
-### 2. Transition Finance & Step-Up Penalty Analysis
-* Analyzed Sustainability-Linked Bonds (SLBs) featuring a **25 bps ($0.25\%$) coupon step-up penalty** triggered by missed sustainability KPI targets.
-* Missed KPI targets resulted in an immediate adjustment in secondary market Yield-to-Maturity ($YTM$), demonstrating how behavioral penalty structures effectively discipline high-emitting ("brown") corporate issuers transitioning to net-zero.
+## Key Results & Econometric Metrics
+
+| Metric / Parameter | Value | Financial & Economic Interpretation |
+| :--- | :--- | :--- |
+| **Average Greenium Spread** | 5 to 19.2 bps | Borrowing cost discount achieved by green-labeled issuances |
+| **ESG Score Coefficient ($\beta_1$)** | 0.1499 ($p < 0.001$) | Each 1-point ESG increase widens Greenium by ~0.15 bps |
+| **SLB Penalty Margin** | +25.0 bps | Step-up coupon penalty applied upon KPI target default |
+| **Average SLB Yield (Target Met)** | 4.49% | Base yield for compliant transition issuers |
+| **Average SLB Yield (Target Missed)**| 4.59% | Penalized yield reflecting step-up margin execution |
+
+---
+
+## Tech Stack & Dependencies
+
+* **Language:** Python 3.x
+* **Database & SQL:** `duckdb`, `pandas`, `numpy`
+* **Econometrics & Modeling:** `statsmodels`
+* **Visualization:** `matplotlib`
 
 ---
 
 ## How to Run
-1. Clone this repository:
-   ```bash
-   git clone [https://github.com/meteaksu/greenium-transition-finance-analysis.git](https://github.com/meteaksu/greenium-transition-finance-analysis.git)
 
-   pip install pandas numpy matplotlib statsmodels duckdb
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/meteaksu/greenium-transition-finance-simulation.git](https://github.com/meteaksu/greenium-transition-finance-simulation.git)
+   cd greenium-transition-finance-simulation
+
+   Install required packages:
+   pip install pandas numpy duckdb statsmodels matplotlib
+
+   Execute the primary analysis notebook:
+   jupyter notebook green_bonds.ipynb
